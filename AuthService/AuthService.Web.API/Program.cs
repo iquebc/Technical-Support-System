@@ -38,6 +38,11 @@ options =>
 }
 );
 
+builder.WebHost.ConfigureKestrel(serverOptions =>
+{
+    serverOptions.ListenAnyIP(80);
+});
+
 var app = builder.Build();
 
 app.UseSwagger();
