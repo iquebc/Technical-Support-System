@@ -1,4 +1,6 @@
-using AuthService.Web.API.Model;
+
+using AuthService.Web.API.DTO;
+using AuthService.Web.API.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AuthService.Web.API.Controllers;
@@ -7,10 +9,19 @@ namespace AuthService.Web.API.Controllers;
 [ApiController]
 public class AuthController : ControllerBase
 {
-    [HttpPost]
-    public ActionResult Login([FromBody]Auth auth)
+
+    private readonly IAuthService _authService;
+    public AuthController(IAuthService authService)
     {
-        return Ok(new { auth.Login, auth.Password });
+        _authService = authService;
+    }
+
+
+    [HttpPost]
+    public async Task<ActionResult> Login([FromBody] AuthRequestDTO auth)
+    {
+        AuthResponseDTO response = await _authService.Authenticate(auth);
+        return Ok(response);
     }
 }
 

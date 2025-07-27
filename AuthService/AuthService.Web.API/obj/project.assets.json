@@ -786,24 +786,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\henrique.ciraulo\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\user\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\henrique.ciraulo\\Documents\\Projeto\\Technical-Support-System\\AuthService\\AuthService.Web.API\\AuthService.Web.API.csproj",
+      "projectUniqueName": "D:\\Projetos\\Technical-Support-System\\AuthService\\AuthService.Web.API\\AuthService.Web.API.csproj",
       "projectName": "AuthService.Web.API",
-      "projectPath": "C:\\Users\\henrique.ciraulo\\Documents\\Projeto\\Technical-Support-System\\AuthService\\AuthService.Web.API\\AuthService.Web.API.csproj",
-      "packagesPath": "C:\\Users\\henrique.ciraulo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\henrique.ciraulo\\Documents\\Projeto\\Technical-Support-System\\AuthService\\AuthService.Web.API\\obj\\",
+      "projectPath": "D:\\Projetos\\Technical-Support-System\\AuthService\\AuthService.Web.API\\AuthService.Web.API.csproj",
+      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+      "outputPath": "D:\\Projetos\\Technical-Support-System\\AuthService\\AuthService.Web.API\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\henrique.ciraulo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -811,7 +806,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -830,7 +824,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.200"
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net9.0": {
@@ -868,7 +862,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.303/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

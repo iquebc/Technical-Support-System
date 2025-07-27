@@ -16,13 +16,13 @@ public class AuthService : IAuthService
             throw new UnauthorizedAccessException("Credenciais inválidas");
 
         var tokenHandler = new JwtSecurityTokenHandler();
-        var key = Encoding.UTF8.GetBytes("l1SG<3v54n6");
+        var key = Encoding.UTF8.GetBytes("xU3FbYz9@1LqRw!sMnP6eC0zKjVd$Xp#TfGh2uW7*AbNmLt+ZqYpEr5SjHvDcXiM");
         var tokenDescriptor = new SecurityTokenDescriptor
         {
             Subject = new ClaimsIdentity(new[]
             {
                 new Claim(ClaimTypes.Name, request.Login),
-                new Claim("CustomClaim", "value")
+                new Claim(ClaimTypes.Role, "admin")
             }),
             Expires = DateTime.UtcNow.AddHours(2),
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),

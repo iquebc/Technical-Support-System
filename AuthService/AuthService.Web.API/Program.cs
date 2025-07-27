@@ -1,3 +1,4 @@
+using AuthService.Web.API.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.OpenApi.Models;
 
@@ -38,10 +39,12 @@ options =>
 }
 );
 
-builder.WebHost.ConfigureKestrel(serverOptions =>
-{
-    serverOptions.ListenAnyIP(80);
-});
+builder.Services.AddScoped<IAuthService, AuthService.Web.API.Services.AuthService>();
+
+// builder.WebHost.ConfigureKestrel(serverOptions =>
+// {
+//     serverOptions.ListenAnyIP(80);
+// });
 
 var app = builder.Build();
 
