@@ -41,10 +41,10 @@ options =>
 
 builder.Services.AddScoped<IAuthService, AuthService.Web.API.Services.AuthService>();
 
-// builder.WebHost.ConfigureKestrel(serverOptions =>
-// {
-//     serverOptions.ListenAnyIP(80);
-// });
+builder.WebHost.ConfigureKestrel(serverOptions =>
+{
+    serverOptions.ListenAnyIP(80);
+});
 
 var app = builder.Build();
 
