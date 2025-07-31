@@ -1,0 +1,22 @@
+services:
+  auth-service:
+    build:
+      context: ./AuthService/AuthService.Web.API
+      dockerfile: Dockerfile
+    ports:
+      - 3000:80
+    # depends_on:
+    #   - userService
+
+  userdb:
+    image: 'postgres'
+    volumes:
+      - userpgdb:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=teste
+      - POSTGRES_USER=userdb
+    ports:
+      - 4000:5432
+  # userService:
+volumes:
+  userpgdb:

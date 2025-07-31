@@ -4,13 +4,15 @@ namespace UserService.Web.API.Domain.Interfaces;
 
 public interface IUserRepository
 {
-    Task<User?> GetById(int idUser);
+    Task<User?> GetByIdAsync(int idUser);
 
-    Task<IEnumerable<User>> GetAll();
+    Task<User?> GetByEmailAsync(string email);
 
-    Task<User> Create(User user);
+    Task<IEnumerable<User>> GetAllAsync();
 
-    Task<User> Update(User user);
+    Task<User> CreateAsync(User user);
 
-    Task<User> Delete(User user);
+    Task<User> UpdateAsync(User user);
+
+    Task<User> DeleteAsync(User user);
 }

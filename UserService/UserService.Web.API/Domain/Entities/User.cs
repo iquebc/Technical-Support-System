@@ -17,11 +17,13 @@ public class User : Entity
 
         DomainValidationException.When(string.IsNullOrWhiteSpace(sobrenome), "Sobrenome precisa ser informado");
 
-        DomainValidationException.When(string.IsNullOrWhiteSpace(email), "Email precisa ser informado");
+        DomainValidationException.When(string.IsNullOrWhiteSpace(email), "E-mail Inválido");
 
-        DomainValidationException.When(string.IsNullOrWhiteSpace(senha), "Senha precisa ser informado");
+        DomainValidationException.When(!EmailValidation.IsValidEmail(email), "E-mail Inválido");
 
-        DomainValidationException.When(idPerfil < 0, "Perfil inválido");
+        DomainValidationException.When(string.IsNullOrWhiteSpace(senha), "Senha Inválida");
+
+        DomainValidationException.When(idPerfil <= 0, "Perfil Inválido");
 
         Nome = nome;
         Sobrenome = sobrenome;
@@ -32,8 +34,9 @@ public class User : Entity
 
     public void AterarNome(string nome, string sobrenome)
     {
-        DomainValidationException.When(string.IsNullOrWhiteSpace(nome), "Nome precisa ser informado");
-        DomainValidationException.When(string.IsNullOrWhiteSpace(sobrenome), "Sobrenome precisa ser informado");
+        DomainValidationException.When(string.IsNullOrWhiteSpace(nome), "Nome/Sobrenome Inválido");
+
+        DomainValidationException.When(string.IsNullOrWhiteSpace(sobrenome), "Nome/Sobrenome Inválido");
 
         Nome = nome;
         Sobrenome = sobrenome;
@@ -41,21 +44,23 @@ public class User : Entity
 
     public void AlterarEmail(string email)
     {
-        DomainValidationException.When(string.IsNullOrWhiteSpace(email), "Email precisa ser informado");
+        DomainValidationException.When(string.IsNullOrWhiteSpace(email), "E-mail Inválido");
+
+        DomainValidationException.When(!EmailValidation.IsValidEmail(email), "E-mail Inválido");
 
         Email = email;
     }
 
     public void AlterarSenha(string senha)
     {
-        DomainValidationException.When(string.IsNullOrWhiteSpace(senha), "Senha precisa ser informado");
+        DomainValidationException.When(string.IsNullOrWhiteSpace(senha), "Senha Inválida");
 
         Senha = senha;
     }
 
     public void AlterarPerfil(int idPerfil)
     {
-        DomainValidationException.When(idPerfil < 0, "Perfil inválido");
+        DomainValidationException.When(idPerfil <= 0, "Perfil Inválido");
 
         IdPerfil = idPerfil;
     }
