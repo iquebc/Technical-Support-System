@@ -1,7 +1,7 @@
 using UserService.Web.API.Domain.Entities;
 using UserService.Web.API.Domain.Validation;
 
-namespace UserService.Test.Domain
+namespace UserService.Tests.Domain
 {
 
     public class EntityTestClass(int id, bool ativo) : Entity(id, ativo)

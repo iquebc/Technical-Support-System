@@ -14,12 +14,12 @@ public class PerfilRepository : IPerfilRepository
         _perfilContext = perfilContext;
     }
 
-    public async Task<IEnumerable<Perfil>> GetAll()
+    public async Task<IEnumerable<Perfil>> GetAllAsync()
     {
         return await _perfilContext.Perfil.ToListAsync();
     }
 
-    public async Task<Perfil?> GetById(int idPerfil)
+    public async Task<Perfil?> GetByIdAsync(int idPerfil)
     {
         return await _perfilContext.Perfil.Where(p => p.Id == idPerfil).FirstOrDefaultAsync();
     }

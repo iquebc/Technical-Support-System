@@ -19,7 +19,7 @@ public class UserTest
         Assert.Equal("Jhon", user.Nome);
         Assert.Equal("Doe", user.Sobrenome);
         Assert.Equal("jhon.doe@test.com", user.Email);
-        Assert.Equal("Abc12345!", user.Senha);
+        Assert.Equal("Abc12345!", user.Password);
         Assert.Equal(1, user.IdPerfil);
         Assert.True(user.Ativo);
     }
@@ -140,7 +140,7 @@ public class UserTest
     {
         User user = GetMock();
         user.AlterarSenha("NovaSenha");
-        Assert.Equal("NovaSenha", user.Senha);
+        Assert.Equal("NovaSenha", user.Password);
     }
 
 

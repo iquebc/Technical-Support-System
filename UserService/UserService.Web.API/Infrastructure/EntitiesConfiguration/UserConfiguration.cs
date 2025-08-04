@@ -9,6 +9,6 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
     public void Configure(EntityTypeBuilder<User> builder)
     {
         builder.HasKey(x => x.Id);
-        builder.HasOne(x => x.Perfil).WithMany(p => p.Users);
+        builder.HasOne(x => x.Perfil).WithMany(p => p.Users).HasForeignKey(u => u.IdPerfil);
     }
 }
