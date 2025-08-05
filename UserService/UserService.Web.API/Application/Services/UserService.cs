@@ -138,7 +138,7 @@ public class UserService : IUserService
     {
         User? user = await _userRepository.GetByIdAsync(idUser);
 
-        DomainValidationException.When(user is null, "Usuário não Encontrado");
+        DomainValidationException.When(user is null, "Usuário não encontrado");
 
         return user!;
     }
