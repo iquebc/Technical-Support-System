@@ -271,6 +271,19 @@ public class UserServiceTest
     }
 
     [Fact]
+    public async Task UpdatePerfilAsync_ShouldThrowException_WhenPerfilIdIsInvalid()
+    {
+        UserUpdatePerfilDTO userRequest = new UserUpdatePerfilDTO
+        {
+            Id = 1,
+            IdPerfil = 0
+        };
+        Func<Task> action = () => _userService.UpdatePerfilAsync(userRequest);
+        DomainValidationException exception = await Assert.ThrowsAsync<DomainValidationException>(action);
+        Assert.Equal("Id Perfil Inválido", exception.Message);
+    }
+
+    [Fact]
     public async Task Should_Update_User_Register_Data_Successfully()
     {
         UserUpdateRegisterDTO userRequest = new UserUpdateRegisterDTO
