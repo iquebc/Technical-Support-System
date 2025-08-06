@@ -1,9 +1,5 @@
-using UserService.Tests.Domain;
 using UserService.Web.API.Domain.Entities;
 using UserService.Web.API.Domain.Interfaces;
-using UserService.Web.API.Infrastructure.Context;
-using UserService.Web.API.Infrastructure.IoC;
-using UserService.Web.API.Infrastructure.Repositories;
 
 namespace UserService.Tests.Repository;
 
@@ -11,38 +7,19 @@ public class PerfilRepositoryTest
 {
     private readonly IPerfilRepository _repository;
 
-    private readonly ApplicationDbContext _context;
+    private readonly ApplicationTestFixture _fixture;
 
     public PerfilRepositoryTest()
     {
-        DBInMemory dBInMemory = new DBInMemory();
-        _context = dBInMemory.GetContext();
-        _repository = new PerfilRepository(_context);
-
-        CleanDatabase(_context);
-        SeedDefaultData(_context);
-    }
-
-    public static void CleanDatabase(ApplicationDbContext _context)
-    {
-        _context.Perfil.RemoveRange(_context.Perfil);
-        _context.SaveChanges();
-    }
-
-    public static void SeedDefaultData(ApplicationDbContext _context)
-    {
-        if (!_context.Perfil.Any())
-        {
-            _context.Perfil.Add(PerfilTest.GetMock());
-            _context.SaveChanges();
-        }
+        _fixture = new ApplicationTestFixture();
+        _repository = _fixture.PerfilRepository;
     }
 
     [Fact]
     public async Task GetAllAsync()
     {
         IEnumerable<Perfil> perfis = await _repository.GetAllAsync();
-        Assert.Single(perfis);
+        Assert.Equal(2, perfis.Count());
     }
 
     [Fact]

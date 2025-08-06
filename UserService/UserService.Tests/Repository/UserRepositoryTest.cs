@@ -1,9 +1,6 @@
 ﻿using UserService.Tests.Domain;
 using UserService.Web.API.Domain.Entities;
 using UserService.Web.API.Domain.Interfaces;
-using UserService.Web.API.Infrastructure.Context;
-using UserService.Web.API.Infrastructure.IoC;
-using UserService.Web.API.Infrastructure.Repositories;
 
 namespace UserService.Tests.Repository;
 
@@ -11,32 +8,22 @@ public class UserRepositoryTest
 {
     private readonly IUserRepository _repository;
 
-    private readonly ApplicationDbContext _context;
+    private readonly ApplicationTestFixture _fixture;
 
     public UserRepositoryTest()
     {
-        DBInMemory dBInMemory = new DBInMemory();
-        _context = dBInMemory.GetContext();
-        _repository = new UserRepository(_context);
-
-        CleanDatabase(_context);
-        SeedDefaultData(_context);
+        _fixture = new ApplicationTestFixture();
+        _repository = _fixture.UserRepository;
     }
 
-    public static void CleanDatabase(ApplicationDbContext _context)
+    [Fact]
+    public async Task CreateAsync()
     {
-        _context.Users.RemoveRange(_context.Users);
-        _context.SaveChanges();
-    }
-
-    public static void SeedDefaultData(ApplicationDbContext _context)
-    {
-        var defaultUser = UserTest.GetMock();
-        if (!_context.Users.Any())
-        {
-            _context.Users.Add(defaultUser);
-            _context.SaveChanges();
-        }
+        User? user = await _repository.CreateAsync(UserTest.GetMock(id: 0, email: "test@test.com"));
+        Assert.NotNull(user);
+        Assert.NotEqual(0, user.Id);
+        Assert.Equal("test@test.com", user.Email);
+        Assert.True(user.Ativo);
     }
 
     [Fact]
@@ -60,15 +47,6 @@ public class UserRepositoryTest
         Assert.NotNull(user);
     }
 
-    [Fact]
-    public async Task CreateAsync()
-    {
-        User? user = await _repository.CreateAsync(UserTest.GetMock(id: 0, email: "test@test.com"));
-        Assert.NotNull(user);
-        Assert.NotEqual(0, user.Id);
-        Assert.Equal("test@test.com", user.Email);
-        Assert.True(user.Ativo);
-    }
 
     [Fact]
     public async Task UpdateAsync()
